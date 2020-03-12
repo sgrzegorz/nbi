@@ -1,4 +1,4 @@
-package nbi;
+package model;
 
 
 /**
@@ -39,7 +39,7 @@ public class Program {
 			
 		} else if (p.getEx() =='4') {
 			System.out.println(Exchange.lowestCurrencyRate(date));
-			
+			 
 		} else if (p.getEx() =='5') {
 			
 			Exchange.sortCurrencySpread(date, number);

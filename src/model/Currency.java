@@ -1,4 +1,4 @@
-package nbi;
+package model;
 
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ import java.util.HashMap;
  *  <"YYYY-MM-DDBid",cenaWaluty> 
  *  
  *   
- */
+ */ 
 public class Currency {
 	private String code,name;
 	private HashMap <String, String> map = new HashMap <String, String>();

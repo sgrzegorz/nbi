@@ -1,4 +1,4 @@
-package nbi;
+package model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -231,7 +231,7 @@ public class Exchange {
 		}
 		
 	}
-	
+	 
 	
 	/**Dla podanej waluty (tabela A) wypisuje informację kiedy dana waluta była najtańsza, a kiedy najdroższa 
 	 * @param code 

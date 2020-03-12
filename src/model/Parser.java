@@ -1,4 +1,4 @@
-package nbi;
+package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,6 +56,7 @@ public class Parser {
 	private String enddate=null;  
 	
 	private static Parser firstInstance=null;
+	private int currentYear = 2020; 
 	
 	public static Parser getInstance(String args[]) {
 		if(firstInstance==null) {
@@ -95,7 +96,7 @@ public class Parser {
 
 		String args= String.join(" ",t);
 		
-		
+		 
 		if(ex=='0') {//{year} {month} {day}
 			
 			String tmp="[\\s,]*([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*"; 
@@ -108,7 +109,7 @@ public class Parser {
 		    	int imonth = Integer.parseInt(matcher.group(2));
 		    	int iday = Integer.parseInt(matcher.group(3));
 		    	this.code="GOLD";
-		    	if(iyear>2018 || iyear<2013) throw new Exception("Date out of range");	
+		    	if(iyear>currentYear || iyear<2013) throw new Exception("Date out of range");	
 		    	
 		    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		    	Calendar cal = Calendar.getInstance();
@@ -135,7 +136,7 @@ public class Parser {
 		    	int imonth = Integer.parseInt(matcher.group(3));
 		    	int iday = Integer.parseInt(matcher.group(4));
 		    	
-		    	if((iyear>2018 || iyear<2002)) throw new Exception("Date out of range");
+		    	if((iyear>currentYear || iyear<2002)) throw new Exception("Date out of range");
 		    	
 		    	
 		    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -164,10 +165,10 @@ public class Parser {
 		    	int iday2=Integer.parseInt(matcher.group(6));
 		    	  	
 		    	//warunki zadania
-		    	if(this.code.equals("GOLD") && (iyear1>2018 || iyear1<2013)) throw new Exception("Date out of range");	    	
-		    	if(this.code.equals("GOLD") && (iyear2>2018 || iyear2<2013)) throw new Exception("Date out of range");
-		    	if((iyear1>2018 || iyear1<2002)) throw new Exception("Date out of range");
-		    	if(iyear2>2018 || iyear2<2002) throw new Exception("Date out of range");
+		    	if(this.code.equals("GOLD") && (iyear1>currentYear || iyear1<2013)) throw new Exception("Date out of range");	    	
+		    	if(this.code.equals("GOLD") && (iyear2>currentYear || iyear2<2013)) throw new Exception("Date out of range");
+		    	if((iyear1>currentYear || iyear1<2002)) throw new Exception("Date out of range");
+		    	if(iyear2>currentYear || iyear2<2002) throw new Exception("Date out of range");
 		    	
 		    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		    	
@@ -225,7 +226,7 @@ public class Parser {
 		    	int iday = Integer.parseInt(matcher.group(3));
 		    	this.number=Integer.parseInt(matcher.group(4));
 		    	
-		    	if((iyear>2018 || iyear<2002)) throw new Exception("Date out of range");
+		    	if((iyear>currentYear || iyear<2002)) throw new Exception("Date out of range");
 		    	
 		    	
 		    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -269,8 +270,8 @@ public class Parser {
 		    	
 		    	
 		    	//warunki zadania
-		    	if((iyear1>2018 || iyear1<2002)) throw new Exception("Date out of range");
-		    	if(iyear2>2018 || iyear2<2002) throw new Exception("Date out of range");
+		    	if((iyear1>currentYear || iyear1<2002)) throw new Exception("Date out of range");
+		    	if(iyear2>currentYear || iyear2<2002) throw new Exception("Date out of range");
 		    	
 		    	
 		    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
