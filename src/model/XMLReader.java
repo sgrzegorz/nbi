@@ -177,7 +177,7 @@ public class XMLReader extends DefaultHandler{
 	   }
 	   
 	   public static void parse(String urlString)  {
-		   
+		    
 			try {
 				
 				SAXParserFactory factory = SAXParserFactory.newInstance();
