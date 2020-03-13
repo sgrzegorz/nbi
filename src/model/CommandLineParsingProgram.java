@@ -11,7 +11,7 @@ package model;
  *number - liczba danych, które ma się wyświetlić na ekranie
  *ex - parametr funkcji programu (wprowadzany przez: -0 -1,-2,-3,-4,-5,-6,-7) jest on cyfrą od 0 do 7
  */
-public class Program {
+public class CommandLineParsingProgram {
 	public static void main(String []args) {
 		Parser p= Parser.getInstance(args);
 		
@@ -35,17 +35,17 @@ public class Program {
 			System.out.println(Exchange.averageGoldRate(startdate,enddate));
 			
 		} else if (p.getEx() =='3') {
-			Exchange.biggestAmplitudeChange(date);
+			System.out.println(Exchange.getMostUnstableCurrencySinceDate(date));
 			
 		} else if (p.getEx() =='4') {
 			System.out.println(Exchange.lowestCurrencyRate(date));
 			 
 		} else if (p.getEx() =='5') {
 			
-			Exchange.sortCurrencySpread(date, number);
+			System.out.println(Exchange.sortCurrencySpread(date, number));
 		} else if (p.getEx() =='6') {
 			
-			Exchange.extremaDates(code);
+			System.out.println(Exchange.extremaDates(code));
 		} else if (p.getEx() =='7') {
 			Exchange.printChart(p.getCode(),p.getStartdate(),p.getEnddate());
 			

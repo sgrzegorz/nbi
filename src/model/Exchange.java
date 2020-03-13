@@ -96,7 +96,7 @@ public class Exchange {
 	 * @param enddate
 	 * @return
 	 */
-	public static double averageGoldRate(String startdate,String enddate)
+	public static String averageGoldRate(String startdate,String enddate)
 	{
 		list.clear();
 		double average=0;
@@ -108,17 +108,17 @@ public class Exchange {
 		}
 		
 		
-		return average/ile;
+		return Double.toString(average/ile);
 	}
 	
 	
 	
 //	
 	/**Odszukuje walutę (tabela A), której kurs, począwszy od podanego dnia, 
-	 * uległ największym wahaniom (waluta, której amplituda zmian kursu jest największa) 
+	 * uległ największym wahaniom (max-min)/max (waluta, której różnica między najmniejszą i najwyższą ceną w danym okresie jest największa) 
 	 * @param startdate - data począwszy od której liczymy kurs
 	 */
-	public static void biggestAmplitudeChange(String startdate) {
+	public static String getMostUnstableCurrencySinceDate(String startdate) {
 		list.clear();
 		//download data for all currencies from statdate to today
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -138,7 +138,9 @@ public class Exchange {
 		}
 
 		
-		TreeMap <Double,String> tree=new TreeMap <Double,String>();
+		//The map is sorted according to the natural ordering of its keys
+		TreeMap <Double,String> tree=new TreeMap <>();
+		
 		for(Currency c : list) {
 			double min=MAX;
 			double max=MIN;
@@ -147,12 +149,11 @@ public class Exchange {
 			    if(val>max) max=val;
 			    if(val<min) min=val;
 			}
-			
-			tree.put(min+max,c.getCode()) ;
+			double stability= (max-min)/max;
+			tree.put(stability,c.getCode()) ;
 		}
 		
-		System.out.println(getCurrency(tree.lastEntry().getValue()).getName());
-
+		return getCurrency(tree.lastEntry().getValue()).getName();
 	}
 	
 	
@@ -169,7 +170,7 @@ public class Exchange {
 		double lowest=1000000000;
 		String lowestCode="";
 		for(Currency c:list) {
-			
+
 			double rate =Double.parseDouble(c.get(date+"Ask"));
 			//System.out.println(rate+c.getCode());
 			if(rate<lowest) {
@@ -177,10 +178,7 @@ public class Exchange {
 				lowestCode=c.getCode();
 			}
 		}
-		
-		String tmp=getCurrency(lowestCode).getName();
-		
-		return tmp;
+		return getCurrency(lowestCode).getName();
 	}
 	
 
@@ -190,7 +188,7 @@ public class Exchange {
 	 * @param date - podany dzień "YYYY-MM-DD"
 	 * @param N    - ile ma wypisać
 	 */
-	public static void sortCurrencySpread(String date,int N) {
+	public static String sortCurrencySpread(String date,int N) {
 		list.clear();
 		XMLReader.parse("http://api.nbp.pl/api/exchangerates/tables/c/"+date+"/?format=xml");
 		
@@ -223,21 +221,24 @@ public class Exchange {
 		}
 		Collections.sort(t);
 
-		System.out.println(date+ " List of currencies sorted by spread");
+		String sortedCurriencies =date+ " List of currencies sorted by spread"+"\n";
+//		System.out.println(date+ " List of currencies sorted by spread");
 		int ile=0;
 		for(Tmp e: t) {
 			if(ile==N) break;
-			System.out.println(e.getCurrency().getName()+" "+e.getSpread());
+			sortedCurriencies+=e.getCurrency().getName()+" "+e.getSpread()+"\n";
+//			System.out.println(e.getCurrency().getName()+" "+e.getSpread());
 			ile++;
 		}
 		
+		return sortedCurriencies;
 	}
 	 
 	
 	/**Dla podanej waluty (tabela A) wypisuje informację kiedy dana waluta była najtańsza, a kiedy najdroższa 
 	 * @param code 
 	 */
-	public static void extremaDates(String code) {
+	public static String extremaDates(String code) {
 		list.clear();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar today = Calendar.getInstance();
@@ -254,7 +255,6 @@ public class Exchange {
     	cal.set(Calendar.YEAR,2002);
     	String startdate=sdf.format(cal.getTime());
 		while(today.get(Calendar.YEAR)> cal.get(Calendar.YEAR)) {
-			
 			
 			while(cal.get(Calendar.DAY_OF_WEEK) ==Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
 	    		cal.set(Calendar.DAY_OF_YEAR,cal.get(Calendar.DAY_OF_YEAR)-1);
@@ -290,14 +290,16 @@ public class Exchange {
 		minKey=minKey.substring(0, minKey.length()-3);
 		maxKey=maxKey.substring(0, maxKey.length()-3);
 		
-		System.out.println("MAX: "+max+" "+maxKey);
-		System.out.println("MIN: "+min+" "+minKey);
-		System.out.println();
 		
+		String returnString = "MAX: "+max+" "+maxKey+"\n"+
+							"MIN: "+min+" "+minKey;
+							
+		return returnString;
+		 
 	}
 	
 
-	
+	 
 	
 	/**
 	 * Rysuje (w trybie tekstowym) wspólny (dla wszystkich tygodni) wykres zmian ceny 

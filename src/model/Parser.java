@@ -325,7 +325,7 @@ public class Parser {
 			System.out.println("----->   Średnia cena złota za podany okres:");
 			System.out.println("-2 {year1} {month1} {day1} {year2} {month2} {day2}");
 			
-			System.out.println("----->   Waluta, której kurs, począwszy od podanego dnia, uległ największym wahaniom:");
+			System.out.println("----->   Waluta, której kurs, począwszy od podanego dnia, był najmniej stabilny: (maxPrice-minPrice)/maxPrice w danym okresie");
 			System.out.println("-3 {year} {month} {day}");
 			
 			System.out.println("----->   Waluta, której kurs kupna był najmniejszy w podanym dniu:");

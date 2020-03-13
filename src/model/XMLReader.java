@@ -1,12 +1,15 @@
 package model;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -175,6 +178,7 @@ public class XMLReader extends DefaultHandler {
 	public static void parse(String urlString) {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 
+		int tried=0;
 		for (int i = 0; i < 2; i++) {
 			try {
 				SAXParser saxParser = factory.newSAXParser();
@@ -184,7 +188,7 @@ public class XMLReader extends DefaultHandler {
 				xmlString = xmlString.replaceAll("\\<\\?xml(.+?)\\?\\>", "").trim();
 
 				String fileName = "file.xml";
-				System.out.println(xmlString);
+				//System.out.println(xmlString);
 
 				File file = new File(fileName);
 				PrintWriter out = new PrintWriter(file);
@@ -195,11 +199,17 @@ public class XMLReader extends DefaultHandler {
 
 				saxParser.parse(file, handler);
 
+				tried=0;
 				break;
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("Natrafiono na problem. Jeżeli program nie wyświetli wyniku w ciągu minuty wyłącz go");
+			} catch (NotFoundException | SAXException | IOException | ParserConfigurationException e) {
+				if (e instanceof NotFoundException) {
+					tried++;
+					if(tried==2) System.out.println(tried+" "+ urlString);
+				}else {
+					e.printStackTrace();
+				}
+				
 			}
 
 		}
