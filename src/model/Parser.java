@@ -85,9 +85,7 @@ public class Parser {
 		}
 		System.out.println();*/
 			
-		for(String s:args) {
-			System.out.println(s);
-		}
+
 		
 		if(args[0].length()!=2) throw new Exception("Incorrect input");
 		if(args[0].charAt(0)!='-')throw new Exception("Incorrect input");
