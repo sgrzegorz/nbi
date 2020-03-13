@@ -58,13 +58,14 @@ public class Exchange {
 	////////////////////////////////////////////////////////////////////////////ZESTAW METOD///////////////////////////////////////////////////////
 	
 
-	
+	 
 	
 	/** Wypisuje, dla podanego dnia, obowiązującą cenę złota oraz cenę podanej waluty (tabela A) 
 	 * @param date
 	 * @return w
 	 */
 	public static String goldRate(String date) {
+		System.out.println(date);
 		list.clear();
 		XMLReader.parse("http://api.nbp.pl/api/cenyzlota/"+date+"/?format=xml");	
 	    Currency c=Exchange.getCurrency("GOLD");

@@ -37,4 +37,14 @@ public class ClientQuestion {
 	}
 	
 	
+	
+	public String getDataFromNbi()) {
+		
+		
+		//String text= new Scanner(ClientQuestion.class.getResourceAsStream("selection.html"), "UTF-8").useDelimiter("\\A").next();
+		return text;
+	}
+	
+	
+	
 }

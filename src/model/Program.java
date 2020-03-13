@@ -21,7 +21,7 @@ public class Program {
 		String date=p.getDate();
 		String code=p.getCode();
 	
-		
+		 
 		//System.out.println("[code: "+code+" date: "+date +" startdate: "+startdate+" enddate: "+enddate+" number: "+number+"]");
 		try {
 		if (p.getEx() =='0') {
@@ -54,6 +54,7 @@ public class Program {
 		}
 		}catch(Exception e) {
 			System.out.println("Wystąpił nieoczekiwany problem. Program zamknie się");
+			e.printStackTrace();
 			System.exit(1);
 		}
 	}
