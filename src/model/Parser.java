@@ -77,31 +77,35 @@ public class Parser {
     	
 	}
 	
-	private Parser(String [] t1) {
+	private Parser(String [] args) {
 		try {
 	    //manage and remove "-1" , "-2", "-3"
-		/*for(String s: t1) {
+		/*for(String s: args) {
 			System.out.print(s+" ");
 		}
 		System.out.println();*/
+			
+		for(String s:args) {
+			System.out.println(s);
+		}
 		
-		if(t1[0].length()!=2) throw new Exception("Incorrect input");
-		if(t1[0].charAt(0)!='-')throw new Exception("Incorrect input");
-		this.ex= t1[0].charAt(1);
+		if(args[0].length()!=2) throw new Exception("Incorrect input");
+		if(args[0].charAt(0)!='-')throw new Exception("Incorrect input");
+		this.ex= args[0].charAt(1);
 		
-		String t[] =new String [t1.length-1];
-		for(int i=1;i<t1.length;i++) {
-			t[i-1]=t1[i];
+		String t[] =new String [args.length-1];
+		for(int i=1;i<args.length;i++) {
+			t[i-1]=args[i];
 		}		
 
-		String args= String.join(" ",t);
+		String arguments= String.join(" ",t);
 		
 		 
 		if(ex=='0') {//{year} {month} {day}
 			
 			String tmp="[\\s,]*([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*"; 
 		    Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		   
 		    if(matcher.matches()) {
 		    	
@@ -125,7 +129,7 @@ public class Parser {
 			
 		    String tmp="[\\s,]*([^\\s,]+)[\\s,]*([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*"; 
 		    Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		   
 		    if(matcher.matches()) {
 		    	
@@ -152,7 +156,7 @@ public class Parser {
 	    	
 			String tmp= "[\\s,]*([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*";
 			Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		   
 		    if(matcher.matches()) {
 		    	
@@ -194,7 +198,7 @@ public class Parser {
 	    	
 	    	String tmp="[\\s,]*([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*"; 
 		    Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		   
 		    if(matcher.matches()) {
 		    	
@@ -216,7 +220,7 @@ public class Parser {
 	    		
 		    String tmp="[\\s,]*([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*"; 
 		    Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		    
 		    if(matcher.matches()) {
 		    	 
@@ -243,7 +247,7 @@ public class Parser {
 	    	
 			String tmp= "[\\s,]*([^\\s,]+)[\\s,]*";
 			Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		   
 		    if(matcher.matches()) {
 		    	
@@ -256,7 +260,7 @@ public class Parser {
 	    	 
 			String tmp= "[\\s,]*([^\\s,]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]+([\\d]+)[\\s,]*";
 			Pattern pattern =Pattern.compile(tmp);
-		    Matcher matcher=pattern.matcher(args);
+		    Matcher matcher=pattern.matcher(arguments);
 		   
 		    if(matcher.matches()) {
 		    	String code=matcher.group(1);
