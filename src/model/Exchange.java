@@ -164,7 +164,7 @@ public class Exchange {
 	 * @param date "YYYY-MM-DD"
 	 * @return
 	 */
-	public static String lowestCurrencyRate(String date) {
+	public static String cheapestCurrency(String date) {
 		list.clear();
 		XMLReader.parse("http://api.nbp.pl/api/exchangerates/tables/c/"+date+"/?format=xml");	
 		double lowest=1000000000;

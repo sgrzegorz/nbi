@@ -3,19 +3,19 @@
 <body>
 
 	<h1>For a given currency get the dates: when it was the cheapest and when most expensive</h1>
+    <b>Available codes</b><br>  <i>"THB","USD","AUD","HKD","CAD","NZD","SGD","EUR","HUF","CHF","GBP","UAH","JPY","CZK","DKK","ISK","NOK","SEK","HRK","RON","BGN","TRY","ILS","CLP","PHP","MXN","ZAR","BRL","MYR","RUB","IDR","INR","KRW","CNY","XDR"</i>
+    <br><br><br>
+            <i>CODE:USD</i> <br><br>
 
-	<form action="/nbi/question/1">
-		<label for="year">YEAR:</label> <input type="text" id="year"
-			name="year"><br>
-		<br> <label for="month">MONTH</label> <input type="text"
-			id="month" name="month"><br>
-		<br> <label for="day">DAY</label> <input type="text"
-			id="day" name="day"><br>
+	<form action="/nbi/question/6">
+    <b>Insert currency code:</b><br>
+		<label for="code">CODE:</label> <input type="text" id="code"
+			name="code"><br>
+		
 		<br> <input type="submit" value="Submit">
 	</form>
 
-	<p>Click the "Submit" button and the form-data will be sent to a
-		page on the server.</p>
+
 
 </body>
 </html>

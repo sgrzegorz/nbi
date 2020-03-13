@@ -3,17 +3,19 @@
 <body>
 
 	<h1>Get currency price for a specific date</h1>
-    
-       <i>YEAR:2019 <br> MONTH:11<br> DAY:20<br> CURRENCY:usd </i> <br><br>
+      <b>Available codes</b><br>  <i>"THB","USD","AUD","HKD","CAD","NZD","SGD","EUR","HUF","CHF","GBP","UAH","JPY","CZK","DKK","ISK","NOK","SEK","HRK","RON","BGN","TRY","ILS","CLP","PHP","MXN","ZAR","BRL","MYR","RUB","IDR","INR","KRW","CNY","XDR"</i>
+    <br><br><br>
+       <i>YEAR:2019 <br> MONTH:10<br> DAY:10<br> CURRENCY:USD </i> <br><br>
 
 
 	<form action="/nbi/question/1">
    		 <b>Date: </b> <br>
 		<label for="year">YEAR:  </label> <input type="text" id="year" name="year"><br>
 		<br> <label for="month">MONTH</label> <input type="text" id="month" name="month"><br>
-		<br> <label for="day">DAY</label> <input type="text"	id="day" name="day"><br><br><br>
+		<br> <label for="day">DAY</label> <input type="text"	id="day" name="day"><br><br><br><br><br>
+        <i>CODE:USD</i> <br><br>
 		<b>Currency: </b> 
-        <br> <label for="code">CURRENCY</label> <input type="text"	id="code" name="code"><br>
+        <br> <label for="code">CODE</label> <input type="text"	id="code" name="code"><br>
 		<br> <input type="submit" value="Submit"><br>
 		
 	</form>

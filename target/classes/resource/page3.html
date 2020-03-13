@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body>
+	<h1>Get most unstable currency in a period of time since a given date until now</h1>
+<i> We get price of each currency everyday between given date and now. We find minimal (minPrice) and maximal price (maxPrice) for all of them. Later we use an equation value=(maxPrice-minPrice)/maxPrice. We return name of currency with the smallest value </i> <br> <br><br> <br>
+<i>YEAR:2019 <br> MONTH:10<br> DAY:10 </i> <br><br>
 
-	<h1>Get currency which price changed the most from the given date until now</h1>
-
-	<form action="/nbi/question/1">
+	<form action="/nbi/question/3">
+    <b> Date since when:</b><br>
 		<label for="year">YEAR:</label> <input type="text" id="year"
 			name="year"><br>
 		<br> <label for="month">MONTH</label> <input type="text"
@@ -14,8 +16,7 @@
 		<br> <input type="submit" value="Submit">
 	</form>
 
-	<p>Click the "Submit" button and the form-data will be sent to a
-		page on the server.</p>
+
 
 </body>
 </html>

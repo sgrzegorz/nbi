@@ -34,7 +34,7 @@ public class MyUnitTest {
     @Test
     public void test4() {	
 
-        assertEquals("forint (Węgry)", Exchange.lowestCurrencyRate("2019-10-10"));
+        assertEquals("forint (Węgry)", Exchange.cheapestCurrency("2019-10-10"));
     }
     
     @Test

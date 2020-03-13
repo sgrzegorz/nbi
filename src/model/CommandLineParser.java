@@ -11,44 +11,43 @@ package model;
  *number - liczba danych, które ma się wyświetlić na ekranie
  *ex - parametr funkcji programu (wprowadzany przez: -0 -1,-2,-3,-4,-5,-6,-7) jest on cyfrą od 0 do 7
  */
-public class CommandLineParsingProgram {
-	public static void main(String []args) {
-		Parser p= Parser.getInstance(args);
-		
+public class CommandLineParser {
+	
+	public static String executeCommandLineTask(Parser p) {
 		String startdate=p.getStartdate();
 		String enddate=p.getEnddate();
 		int number=p.getNumber();
 		String date=p.getDate();
 		String code=p.getCode();
 	
-		 
+		 String result="error_occured";
 		//System.out.println("[code: "+code+" date: "+date +" startdate: "+startdate+" enddate: "+enddate+" number: "+number+"]");
 		try {
 		if (p.getEx() =='0') {
 			
-			System.out.println(Exchange.goldRate(date));
+			result=Exchange.goldRate(date);
 			
 		} else if (p.getEx() =='1') {
-			System.out.println(Exchange.currencyRate(code,date));
+			result=Exchange.currencyRate(code,date);
 
 		} else if (p.getEx() =='2') {
-			System.out.println(Exchange.averageGoldRate(startdate,enddate));
+			result=Exchange.averageGoldRate(startdate,enddate);
 			
 		} else if (p.getEx() =='3') {
-			System.out.println(Exchange.getMostUnstableCurrencySinceDate(date));
+			result=Exchange.getMostUnstableCurrencySinceDate(date);
 			
 		} else if (p.getEx() =='4') {
-			System.out.println(Exchange.lowestCurrencyRate(date));
+			result=Exchange.cheapestCurrency(date);
 			 
 		} else if (p.getEx() =='5') {
 			
-			System.out.println(Exchange.sortCurrencySpread(date, number));
+			result=Exchange.sortCurrencySpread(date, number);
 		} else if (p.getEx() =='6') {
 			
-			System.out.println(Exchange.extremaDates(code));
+			result=Exchange.extremaDates(code);
 		} else if (p.getEx() =='7') {
 			Exchange.printChart(p.getCode(),p.getStartdate(),p.getEnddate());
-			
+			result="chart was printed";
 		} else {
 			System.out.println("Error while parsing, incorrect exercise number.");
 		}
@@ -57,5 +56,13 @@ public class CommandLineParsingProgram {
 			e.printStackTrace();
 			System.exit(1);
 		}
+		return result;
+	}
+	
+	
+	public static void main(String []args) {
+		Parser p= Parser.getInstance(args);
+		System.out.println(executeCommandLineTask(p));
+		
 	}
 }
