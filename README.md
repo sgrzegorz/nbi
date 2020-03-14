@@ -1,5 +1,5 @@
 
-#Simple Program which uses NBP Web API 
+# Simple Program which uses NBP Web API 
 
 Program written in Java, Jersey. Program connects to NBP Web API gets from it information about currencies. Performs operations on downloaded data. The program can work in two ways:
 Version1 on Tomcat server as a browser app  http://localhost:8080/nbi/question. Version2 as a Command Line Application with input argument list.
