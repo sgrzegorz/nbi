@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import exception.IncorrectArgumentsException;
 import model.Exchange;
 import model.Parser;
 import model.CommandLineParser;
@@ -35,6 +36,8 @@ public class ClientQuestion {
 			return CommandLineParser.executeCommandLineTask(new Parser(args));
 
 		}
+		
+//		throw new IncorrectArgumentsException("HEEEEEEEEEEEEEJ");
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page0.html"), "UTF-8").useDelimiter("\\A").next();
 	}
 
