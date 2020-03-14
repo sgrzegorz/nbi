@@ -32,7 +32,7 @@ public class ClientQuestion {
 		if (isNotEmpty(year) && isNotEmpty(month) && isNotEmpty(day)) {
 //			String [] args= new String[]{"-0","2019","10","10"};
 			String[] args = new String[] { "-0", year, month, day };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page0.html"), "UTF-8").useDelimiter("\\A").next();
@@ -45,7 +45,7 @@ public class ClientQuestion {
 
 		if (isNotEmpty(code) && isNotEmpty(year) && isNotEmpty(month) && isNotEmpty(day)) {
 			String[] args = new String[] { "-1", code, year, month, day };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page1.html"), "UTF-8").useDelimiter("\\A").next();
@@ -60,7 +60,7 @@ public class ClientQuestion {
 		if (isNotEmpty(year1) && isNotEmpty(month1) && isNotEmpty(day1) && isNotEmpty(year2) && isNotEmpty(month2)
 				&& isNotEmpty(day2)) {
 			String[] args = new String[] { "-2", year1, month1, day1, year2, month2, day2 };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page2.html"), "UTF-8").useDelimiter("\\A").next();
 	}
@@ -72,7 +72,7 @@ public class ClientQuestion {
 
 		if (isNotEmpty(year) && isNotEmpty(month) && isNotEmpty(day)) {
 			String[] args = new String[] { "-3", year, month, day };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page3.html"), "UTF-8").useDelimiter("\\A").next();
 	}
@@ -84,7 +84,7 @@ public class ClientQuestion {
 
 		if (isNotEmpty(year) && isNotEmpty(month) && isNotEmpty(day)) {
 			String[] args = new String[] { "-4", year, month, day };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page4.html"), "UTF-8").useDelimiter("\\A").next();
@@ -97,7 +97,7 @@ public class ClientQuestion {
 
 		if (isNotEmpty(year) && isNotEmpty(month) && isNotEmpty(day) && number > 0) {
 			String[] args = new String[] { "-5", year, month, day, Integer.toString(number) };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page5.html"), "UTF-8").useDelimiter("\\A").next();
@@ -109,7 +109,7 @@ public class ClientQuestion {
 
 		if (isNotEmpty(code)) {
 			String[] args = new String[] { "-6", code };
-			return CommandLineParser.executeCommandLineTask(Parser.getInstance(args));
+			return CommandLineParser.executeCommandLineTask(new Parser(args));
 
 		}
 		return new Scanner(ClientQuestion.class.getResourceAsStream("page6.html"), "UTF-8").useDelimiter("\\A").next();

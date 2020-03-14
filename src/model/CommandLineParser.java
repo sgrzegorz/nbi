@@ -61,7 +61,7 @@ public class CommandLineParser {
 	
 	
 	public static void main(String []args) {
-		Parser p= Parser.getInstance(args);
+		Parser p= new Parser(args);
 		System.out.println(executeCommandLineTask(p));
 		
 	}
